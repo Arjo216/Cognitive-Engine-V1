@@ -1,8 +1,7 @@
 # Cognitive-Engine-V1
 A high-performance cognitive search engine utilizing autonomous multi-agent ingestion, hybrid vector embeddings, and a Retrieval-Augmented Generation (RAG) pipeline.
-
 <div align="center">
-  <img src="https://img.icons8.com/external-solid-line-colors-kendis-lasman/128/external-brain-artificial-intelligence-solid-line-colors-kendis-lasman.png" alt="Brain Icon" width="80" />
+  <img src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Brain/3D/brain_3d.png" alt="Brain Icon" width="80" />
   
   # 🧠 The Founder's Oracle
   **Enterprise-Grade Cognitive Search & Neural RAG Engine**
@@ -60,6 +59,8 @@ graph TB
     end
 
     API -->|Multipart SSE Stream\nMetadata + Text| UI
+```
+--- 
 
 ## 🛠️ Tech Stack
 
@@ -80,39 +81,40 @@ Create a `.env` file in the root directory and inject your cryptographic keys:
 PINECONE_API_KEY=your_pinecone_key_here
 GEMINI_API_KEY=your_gemini_key_here
 HF_TOKEN=your_huggingface_read_token_here
-
-2. Booting the Neural Core (Backend)
+```
+### 2. Booting the Neural Core (Backend)
 Open Terminal 1, activate your virtual environment, and ignite the FastAPI server:
 
-Bash
+```Bash
 source venv/bin/activate
 pip install -r requirements.txt
 uvicorn api:app --reload --port 8000
 Wait for the 🚀 Igniting Neural Cores... sequence to complete and bind to Port 8000.
-
-3. Booting the UI (Frontend)
+```
+### 3. Booting the UI (Frontend)
 Open Terminal 2, navigate to the React directory, and start the development server:
 
-Bash
+```Bash
 cd web-frontend
 npm install
 npm run dev
-Navigate to http://localhost:3000 (or your active Codespace port) to access the Oracle.
+```
+Navigate to *http://localhost:3000* (or your active Codespace port) to access the Oracle.
 
-🗺️ Roadmap / Future Expeditions
-[x] Vertical Slice: Vector Matching & Generation
+### 🗺️ Roadmap / Future Expeditions
+* [x] Vertical Slice: Vector Matching & Generation
 
-[x] Enterprise Architecture: Streamlit -> Next.js Migration
+* [x] Enterprise Architecture: Streamlit -> Next.js Migration
 
-[x] Peak Optimization: Streaming SSE & Neural Reranking
+* [x] Peak Optimization: Streaming SSE & Neural Reranking
 
-[ ] Deployment: Containerize & deploy to Render (Backend) and Vercel (Frontend).
+* [ ] Deployment: Containerize & deploy to Render (Backend) and Vercel (Frontend).
 
-[ ] Data Expansion: Deploy new Spiders to ingest SEC filings, scientific journals, and financial datasets.
+* [ ] Data Expansion: Deploy new Spiders to ingest SEC filings, scientific journals, and financial datasets.
 
-[ ] Memory Integration: Implement Redis-backed conversation history for multi-turn contextual awareness.
+* [ ] Memory Integration: Implement Redis-backed conversation history for multi-turn contextual awareness.
 
-"Startups are so counterintuitive that if you trust your instincts, you'll make a lot of mistakes." — Paul Graham
+  **"Startups are so counterintuitive that if you trust your instincts, you'll make a lot of mistakes." — Paul Graham**
 
 <div align="center">
 <sub>Built with precision. Designed for scale.</sub>
