@@ -6,8 +6,10 @@ import ReactMarkdown from "react-markdown";
 
 // --- ⚙️ CONFIGURATION ---
 const API_URL = "https://laughing-fishstick-694p45w96jvfxx4j-8000.app.github.dev";
-const SECURE_JWT_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJuZXh0anNfZnJvbnRlbmQiLCJyb2xlIjoiYWRtaW4ifQ.j9pwvaDW5KZs6GvpKkDG593LVGZwHItUUNCq-1-U0Dg"; // 🚨 Ensure your token is here!
 
+// 🔒 Securely pull the token from the environment.
+//const SECURE_JWT_TOKEN = process.env.NEXT_PUBLIC_SECURE_JWT_TOKEN || "";
+const SECURE_JWT_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJuZXh0anNfZnJvbnRlbmQiLCJyb2xlIjoiYWRtaW4ifQ.j9pwvaDW5KZs6GvpKkDG593LVGZwHItUUNCq-1-U0Dg"; // 🚨 Ensure your token is here!
 type Source = { title: string; author: string; score: number; url: string };
 type Message = { role: "user" | "assistant"; content: string; sources?: Source[] };
 
@@ -183,9 +185,14 @@ export default function Home() {
                     </div>
                   </div>
 
+                  {/* --- FILTERED SOURCE CHIPS --- */}
                   {msg.sources && msg.sources.length > 0 && (
                     <div className="mt-3 flex flex-wrap gap-2">
-                      {msg.sources.map((src, i) => (
+                      {msg.sources
+                        .filter((src, index, self) => 
+                          index === self.findIndex((t) => t.title === src.title)
+                        )
+                        .map((src, i) => (
                         <a 
                           key={i} 
                           href={src.url !== "#" ? src.url : undefined} 
@@ -195,8 +202,11 @@ export default function Home() {
                         >
                           <BookOpen size={14} className="text-emerald-400 mr-2 group-hover:text-emerald-300" />
                           <span className="font-medium mr-2">{src.title}</span>
-                          <span className="text-slate-500 border-l border-slate-600 pl-2 pr-2">Score: {src.score}</span>
-                          <ExternalLink size={12} className="text-slate-500 group-hover:text-emerald-400 transition-colors" />
+                          
+                          {/* NOTE: Score is commented out for cleaner UI. Uncomment the line below to show it again! */}
+                          {/* <span className="text-slate-500 border-l border-slate-600 pl-2 pr-2">Score: {src.score}</span> */}
+                          
+                          <ExternalLink size={12} className="text-slate-500 ml-2 group-hover:text-emerald-400 transition-colors" />
                         </a>
                       ))}
                     </div>
